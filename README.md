@@ -4,9 +4,14 @@
 Saya Muhammad Daffa Rizmawan Harahap mengerjakan TP10 dalam mata kuliah DPBO untuk keberkahanNya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
 ## Deskripsi Program
-Program ini merupakan aplikasi sistem manajemen hotel sederhana yang dibangun menggunakan PHP dengan pola arsitektur MVVM (Model-View-ViewModel). Aplikasi ini memungkinkan pengelolaan data kamar hotel, tamu, dan reservasi dengan antarmuka web yang user-friendly.
+Aplikasi ini mendemonstrasikan implementasi pola MVVM dalam pengembangan web dengan PHP, menunjukkan pemisahan yang jelas antara logika data (Model), presentasi (View), dan logika presentasi (ViewModel). Struktur database yang terrelasi memungkinkan pengelolaan data hotel yang efisien dan konsisten.
 
+
+## Desain Program
 ## Konsep MVVM (Model-View-ViewModel)
+
+### Struktur Folder
+![Folder Structure](https://github.com/user-attachments/assets/f32d87b5-4128-4693-b34a-e7f2adee8e4c)
 
 ### 1. Model
 Model berfungsi sebagai representasi data dan logika bisnis aplikasi:
@@ -14,22 +19,8 @@ Model berfungsi sebagai representasi data dan logika bisnis aplikasi:
 - **Guest.php**: Mengelola data tamu (id, name, phone)
 - **Reservation.php**: Mengelola data reservasi (id, room_id, guest_id, check_in, check_out)
 
-Model bertanggung jawab untuk:
-- Operasi CRUD (Create, Read, Update, Delete)
-- Validasi data
-- Interaksi dengan database
-- Implementasi logika bisnis
-
 ### 2. View
-View adalah lapisan presentasi yang menampilkan data kepada pengguna:
-- **Template files** (*.php): File HTML dengan embedded PHP untuk menampilkan data
-- **guest_form.php**: Form untuk input/edit data tamu
-- **guest_list.php**: Daftar tamu yang terdaftar
-- **reservation_form.php**: Form untuk membuat/edit reservasi
-- **reservation_list.php**: Daftar reservasi
-- **room_form.php**: Form untuk input/edit data kamar
-- **room_list.php**: Daftar kamar hotel
-- **header.php & footer.php**: Template dasar untuk konsistensi tampilan
+View adalah lapisan presentasi yang menampilkan data kepada pengguna.
 
 ### 3. ViewModel
 ViewModel bertindak sebagai perantara antara Model dan View:
@@ -37,13 +28,9 @@ ViewModel bertindak sebagai perantara antara Model dan View:
 - **ReservationViewModel.php**: Mengelola logika presentasi untuk data reservasi
 - **RoomViewModel.php**: Mengelola logika presentasi untuk data kamar
 
-ViewModel bertugas:
-- Mengambil data dari Model
-- Memformat data untuk ditampilkan di View
-- Menangani input dari View dan meneruskannya ke Model
-- Implementasi logika presentasi
-
 ## Relasi Database
+### Database
+![Database Schema](https://github.com/user-attachments/assets/76c1e01e-d12b-49d5-ad31-3785f1ce6c6a)
 
 ### Struktur Database
 Database terdiri atas 3 tabel utama dengan relasi sebagai berikut:
@@ -79,14 +66,6 @@ Database terdiri atas 3 tabel utama dengan relasi sebagai berikut:
 4. **Many-to-One**: `reservations` → `guests`
    - Banyak reservasi dapat merujuk ke satu tamu
 
-## Desain Program
-
-### Database
-![Database Schema](https://github.com/user-attachments/assets/76c1e01e-d12b-49d5-ad31-3785f1ce6c6a)
-
-### Struktur Folder
-![Folder Structure](https://github.com/user-attachments/assets/f32d87b5-4128-4693-b34a-e7f2adee8e4c)
-
 ## Alur Program
 
 ### 1. Inisialisasi
@@ -108,34 +87,10 @@ Database terdiri atas 3 tabel utama dengan relasi sebagai berikut:
 
 ### 4. Pengelolaan Reservasi
 1. **Buat Reservasi**: 
-   - Pilih kamar yang tersedia
-   - Pilih/daftarkan tamu
-   - Tentukan tanggal check-in dan check-out
-   - Validasi ketersediaan kamar
-   - Simpan reservasi
 2. **Lihat Reservasi**: Tampilkan daftar reservasi dengan detail kamar dan tamu
 3. **Edit Reservasi**: Ubah tanggal atau pindah kamar (jika tersedia)
 4. **Batalkan Reservasi**: Hapus reservasi dari sistem
-
-### 5. Validasi dan Error Handling
-- Validasi format data input
-- Pengecekan ketersediaan kamar untuk tanggal tertentu
-- Penanganan error database
-- Konfirmasi sebelum penghapusan data
-
-## Fitur Utama
-- **Manajemen Kamar**: CRUD operations untuk data kamar hotel
-- **Manajemen Tamu**: Registrasi dan pengelolaan data tamu
-- **Sistem Reservasi**: Pembuatan dan pengelolaan reservasi
-- **Validasi Ketersediaan**: Pengecekan konflik jadwal reservasi
-- **Interface Responsif**: Tampilan yang mudah digunakan
-
-## Teknologi yang Digunakan
-- **Backend**: PHP 7.4+
-- **Database**: MySQL
-- **Frontend**: HTML, CSS, JavaScript
-- **Architecture Pattern**: MVVM (Model-View-ViewModel)
-
+  
 ## Dokumentasi
 
 ### Room Management
@@ -146,12 +101,3 @@ https://github.com/user-attachments/assets/fc035781-115a-47c6-abae-6cb755201d48
 
 ### Reservation Management
 https://github.com/user-attachments/assets/07b320be-c2c1-466d-a79f-4b18b6a3fa81
-
-## Cara Menjalankan
-1. Clone repository ke local server (XAMPP/WAMP)
-2. Import file database `db_tp10.sql` ke MySQL
-3. Konfigurasi koneksi database di `config/Database.php`
-4. Akses aplikasi melalui browser: `http://localhost/tp10dpbo2025c2`
-
-## Kesimpulan
-Aplikasi ini mendemonstrasikan implementasi pola MVVM dalam pengembangan web dengan PHP, menunjukkan pemisahan yang jelas antara logika data (Model), presentasi (View), dan logika presentasi (ViewModel). Struktur database yang terrelasi memungkinkan pengelolaan data hotel yang efisien dan konsisten.
